@@ -1,0 +1,143 @@
+/* Tipografías */
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f8f9fa;
+  color: #0A1F44;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Poppins', sans-serif;
+  color: #0A1F44;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #0A1F44;
+}
+
+.navbar-brand {
+  font-family: 'Poppins', sans-serif;
+  color: #FFFFFF !important; 
+}
+
+
+/* Botón Portafolio */
+.btn-portafolio {
+  background-color: #00C896;
+  color: #FFFFFF;
+  font-weight: bold;
+  border: none;
+}
+
+.btn-portafolio:hover {
+  background-color: #0A1F44;
+  color: #FFFFFF;
+}
+
+/* Secciones */
+section {
+  padding: 60px 20px;
+}
+
+/* Footer */
+footer {
+  background-color: #0A1F44;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 15px;
+}
+
+/* Tarjetas y botones: sombra solo en hover */
+.card,
+a.btn {
+  box-shadow: none;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover,
+a.btn:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+/* Tarjetas en fila con overlay oculto */
+.card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Rectángulo negro oculto por defecto */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Mostrar overlay solo al pasar el cursor */
+.card:hover .overlay {
+  opacity: 1;
+}
+p {
+  text-align: justify;
+}
+
+/* Botón flotante de WhatsApp */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 80px;   /* separación del borde inferior, antes del footer */
+  right: 20px;    /* separación del borde derecho */
+  background-color: #25D366; /* color oficial de WhatsApp */
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  transition: background-color 0.3s ease;
+  z-index: 1000; /* asegura que quede encima de otros elementos */
+}
+
+.whatsapp-btn:hover {
+  background-color: #128C7E; /* tono más oscuro al pasar el cursor */
+  color: #FFFFFF;
+}
+/* Botón flotante del carrito */
+.cart-btn {
+  position: fixed;
+  bottom: 80px;   /* igual que el botón de WhatsApp */
+  left: 20px;     /* separación del borde izquierdo */
+  z-index: 1000;  /* asegura que quede encima */
+}
+
+.cart-btn button {
+  background-color: #0A1F44; /* azul oscuro para mantener la sintonía */
+  color: #FFFFFF;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  transition: background-color 0.3s ease;
+}
+
+.cart-btn button:hover {
+  background-color: #00C896; /* verde de tu paleta */
+  color: #FFFFFF;
+}
+/* Estilos para la tabla de precios */
+.table td, .table th {
+  padding: 1.5rem;       /* más espacio interno en cada celda */
+  vertical-align: middle; /* centra el contenido verticalmente */
+  font-size: 1.1rem;     /* texto un poco más grande */
+}
+
+.table {
+  border-radius: 15px;   /* esquinas redondeadas */
+  overflow: hidden;
+}
+
+.card .table {
+  margin-bottom: 0;      /* elimina espacio extra dentro del card */
+}

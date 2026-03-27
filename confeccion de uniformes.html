@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Confección de Uniformes - Nova Caribe</title>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Open+Sans&display=swap" rel="stylesheet">
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <!-- Nombre de la marca -->
+    <a class="navbar-brand" href="#">Nova Caribe</a>
+
+    <!-- Botón hamburguesa -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuHamburguesa" aria-controls="menuHamburguesa" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Opciones del menú -->
+    <div class="collapse navbar-collapse" id="menuHamburguesa">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="precios.html">Lista de Precios</a></li>
+        <li class="nav-item"><a class="nav-link" href="diseño textil.html">Diseño Textil</a></li>
+        <li class="nav-item"><a class="nav-link" href="produccion-a-gran-escala.html">Producción A Gran Escala</a></li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <!-- Hero -->
+  <header class="bg-white">
+    <div class="container py-5 d-flex align-items-center justify-content-between">
+      <h1 class="mb-0">Confección de Uniformes</h1>
+      <img src="logo nova caribe.jpg" alt="Logo Nova Caribe" 
+           style="width:150px; height:150px; border-radius:50%; object-fit:cover;">
+    </div>
+  </header>
+
+  <!-- Tarjetas de Uniformes -->
+  <section class="container my-5">
+    <h2 class="text-center mb-4">Nuestros Uniformes</h2>
+    <div class="row text-center">
+
+      <!-- Trabajos Pesados -->
+      <div class="col-md-4 mb-4">
+        <div class="card position-relative">
+          <img src="pesados.jpg" alt="Uniformes Pesados" class="img-fluid rounded w-200" style="height:200px; object-fit:cover;">
+          <div class="overlay bg-dark bg-opacity-75 text-center p-3">
+            <h3 class="text-white mb-1">Trabajos Pesados</h3>
+            <p class="text-white">Textiles de alta resistencia, telas de calidad mundial.</p>
+            <div class="d-flex justify-content-center align-items-center mb-2">
+              <button class="btn btn-sm btn-light" onclick="changeQuantity('pesados', -1)">-</button>
+              <input type="text" id="qty-pesados" value="1" class="form-control form-control-sm mx-2 text-center" style="width:60px;" onblur="validateQuantity('pesados')">
+              <button class="btn btn-sm btn-light" onclick="changeQuantity('pesados', 1)">+</button>
+            </div>
+            <button class="btn btn-sm btn-light mt-2" onclick="addToCart('Uniforme Pesado', 80000, document.getElementById('qty-pesados').value)">Agregar al carrito</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Medicina -->
+      <div class="col-md-4 mb-4">
+        <div class="card position-relative">
+          <img src="medicos.jpg" alt="Uniformes Médicos" class="img-fluid rounded w-100" style="height:200px; object-fit:cover;">
+          <div class="overlay bg-dark bg-opacity-75 text-center p-3">
+            <h3 class="text-white mb-1">Medicina</h3>
+            <p class="text-white">Telas suaves, cómodas y resistentes a lavados frecuentes.</p>
+            <div class="d-flex justify-content-center align-items-center mb-2">
+              <button class="btn btn-sm btn-light" onclick="changeQuantity('medicos', -1)">-</button>
+              <input type="text" id="qty-medicos" value="1" class="form-control form-control-sm mx-2 text-center" style="width:60px;" onblur="validateQuantity('medicos')">
+              <button class="btn btn-sm btn-light" onclick="changeQuantity('medicos', 1)">+</button>
+            </div>
+            <button class="btn btn-sm btn-light mt-2" onclick="addToCart('Uniforme Médico', 60000, document.getElementById('qty-medicos').value)">Agregar al carrito</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Corporativos -->
+      <div class="col-md-4 mb-4">
+        <div class="card position-relative">
+          <img src="corporativos.jpg" alt="Uniformes Corporativos" class="img-fluid rounded w-100" style="height:200px; object-fit:cover;">
+          <div class="overlay bg-dark bg-opacity-75 text-center p-3">
+            <h3 class="text-white mb-1">Corporativos</h3>
+            <p class="text-white">Diseño elegante con textiles premium para oficinas.</p>
+            <div class="d-flex justify-content-center align-items-center mb-2">
+              <button class="btn btn-sm btn-light" onclick="changeQuantity('corporativos', -1)">-</button>
+              <input type="text" id="qty-corporativos" value="1" class="form-control form-control-sm mx-2 text-center" style="width:60px;" onblur="validateQuantity('corporativos')">
+              <button class="btn btn-sm btn-light" onclick="changeQuantity('corporativos', 1)">+</button>
+            </div>
+            <button class="btn btn-sm btn-light mt-2" onclick="addToCart('Uniforme Corporativo', 70000, document.getElementById('qty-corporativos').value)">Agregar al carrito</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Escolares -->
+      <div class="col-md-4 mb-4">
+        <div class="card position-relative">
+          <img src="escolares.jpg" alt="Uniformes Escolares" class="img-fluid rounded w-100" style="height:200px; object-fit:cover;">
+          <div class="overlay bg-dark bg-opacity-75 text-center p-3">
+            <h3 class="text-white mb-1">Escolares</h3>
+            <p class="text-white">Telas duraderas y cómodas para uso diario.</p>
+            <div class="d-flex justify-content-center align-items-center mb-2">
+              <button class="btn btn-sm btn-light" onclick="changeQuantity('escolares', -1)">-</button>
+              <input type="text" id="qty-escolares" value="1" class="form-control form-control-sm mx-2 text-center" style="width:60px;" onblur="validateQuantity('escolares')">
+              <button class="btn btn-sm btn-light" onclick="changeQuantity('escolares', 1)">+</button>
+            </div>
+            <button class="btn btn-sm btn-light mt-2" onclick="addToCart('Uniforme Escolar', 40000, document.getElementById('qty-escolares').value)">Agregar al carrito</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Deportivos -->
+      <div class="col-md-4 mb-4">
+        <div class="card position-relative">
+          <img src="deportivos.jpg" alt="Uniformes Deportivos" class="img-fluid rounded w-100" style="height:200px; object-fit:cover;">
+          <div class="overlay bg-dark bg-opacity-75 text-center p-3">
+            <h3 class="text-white mb-1">Deportivos</h3>
+            <p class="text-white">Materiales transpirables y flexibles para alto rendimiento.</p>
+            <div class="d-flex justify-content-center align-items-center mb-2">
+              <button class="btn btn-sm btn-light" onclick="changeQuantity('deportivos', -1)">-</button>
+              <input type="text" id="qty-deportivos" value="1" class="form-control form-control-sm mx-2 text-center" style="width:60px;" onblur="validateQuantity('deportivos')">
+              <button class="btn btn-sm btn-light" onclick="changeQuantity('deportivos', 1)">+</button>
+            </div>
+            <button class="btn btn-sm btn-light mt-2" onclick="addToCart('Uniforme Deportivo', 50000, document.getElementById('qty-deportivos').value)">Agregar al carrito</button>
+          </div>
+        </div>
+      </div>
+
+<!-- Personalizados -->
+<div class="col-md-6 mb-4">
+  <div class="card position-relative">
+    <img src="diseño.webp" alt="Diseño personalizado" 
+         class="img-fluid rounded w-100" style="height:200px; object-fit:cover;">
+    <div class="overlay bg-dark bg-opacity-75 text-center p-3">
+      <h3 class="text-white mb-1">Diseño personalizado</h3>
+      <button class="btn btn-light mt-2" onclick="mostrarFormulario()">
+        Solicitar diseño
+      </button>
+    </div>
+  </div>
+</div>
+</div> <!-- cierre del row del catálogo -->
+</section> <!-- cierre de la sección catálogo -->
+
+<!-- Formulario de solicitud de diseño -->
+<section id="formulario-personalizado" class="container my-5" style="display:none;">
+  <h2 class="text-center mb-4">Solicita tu diseño personalizado</h2>
+  <form id="formPersonalizado" class="p-4 border rounded shadow-sm bg-light">
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="nombre" required>
+    </div>
+    <div class="mb-3">
+      <label for="telefono" class="form-label">Número de teléfono</label>
+      <input type="tel" class="form-control" id="telefono" required>
+    </div>
+    <div class="mb-3">
+      <label for="correo" class="form-label">Correo electrónico</label>
+      <input type="email" class="form-control" id="correo" required>
+    </div>
+    <div class="mb-3">
+      <label for="archivo" class="form-label">Sube tu archivo o idea aquí</label>
+      <input type="file" class="form-control" id="archivo">
+    </div>
+    <button type="submit" class="btn btn-success">Enviar</button>
+  </form>
+  <div id="mensaje-gracias" class="alert alert-success mt-3" style="display:none;">
+    ¡Gracias por tu solicitud! Pronto estaremos contactándote.
+  </div>
+</section>
+
+
+    </div>
+  </section> 
+
+      <div class="text-center mt-4">
+      <a href="index.html" class="btn btn-portafolio">Ir a inicio</a>
+      <a href="portafolio.html" class="btn btn-portafolio">Regresar</a>
+      <a href="diseño textil.html" class="btn btn-portafolio">Diseño Textil</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Nova Caribe Textil y Confecciones</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Botón de carrito fijo -->
+  <div class="cart-btn">
+    <button class="btn btn-dark rounded-circle p-3" 
+            data-bs-toggle="offcanvas" 
+            data-bs-target="#cartSidebar" 
+            aria-controls="cartSidebar">
+      🛒
+    </button>
+  </div>
+
+    <!-- Sidebar del carrito -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="cartSidebar" aria-labelledby="cartSidebarLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="cartSidebarLabel">Carrito de Compras</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul id="cart-items" class="list-group mb-3"></ul>
+      <h6>Total: <span id="cart-total">$0</span></h6>
+      <button id="checkout-btn" class="btn btn-success w-100 mt-3">Ir a pagar</button>
+    </div>
+  </div>
+
+  <!-- Script de cantidades, multiplicación y eliminación -->
+<script>
+  let cart = [];
+
+  // Agregar producto al carrito
+  function addToCart(nombre, precio, cantidad = 1) {
+    cantidad = parseInt(cantidad);
+    const existing = cart.find(item => item.nombre === nombre);
+    if (existing) {
+      existing.cantidad += cantidad;
+    } else {
+      cart.push({ nombre, precio, cantidad });
+    }
+    renderCart();
+    mostrarNotificacion(`${nombre} agregado`, "success");
+  }
+
+  // Aumentar cantidad
+  function increaseQuantity(index) {
+    cart[index].cantidad += 1;
+    renderCart();
+    mostrarNotificacion(`${cart[index].nombre} agregado`, "success");
+  }
+
+  // Disminuir cantidad
+  function decreaseQuantity(index) {
+    if (cart[index].cantidad > 1) {
+      cart[index].cantidad -= 1;
+      mostrarNotificacion(`${cart[index].nombre} eliminado (1 unidad)`, "warning");
+    } else {
+      const eliminado = cart[index].nombre;
+      cart.splice(index, 1);
+      mostrarNotificacion(`${eliminado} eliminado`, "danger");
+    }
+    renderCart();
+  }
+
+  // Renderizar carrito
+  function renderCart() {
+    const cartItems = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+    cartItems.innerHTML = '';
+    let total = 0;
+
+    cart.forEach((item, index) => {
+      total += item.precio * item.cantidad;
+
+      const li = document.createElement('li');
+      li.className = 'list-group-item';
+      li.innerHTML = `
+        <div class="d-flex justify-content-between align-items-center">
+          <!-- Nombre del producto -->
+          <div class="flex-fill text-start"><strong>${item.nombre}</strong></div>
+
+          <!-- Control de cantidad -->
+          <div class="d-flex align-items-center justify-content-center" style="width:120px;">
+            <button class="btn btn-sm btn-outline-secondary" onclick="decreaseQuantity(${index})">-</button>
+            <span class="mx-2">${item.cantidad}</span>
+            <button class="btn btn-sm btn-outline-secondary" onclick="increaseQuantity(${index})">+</button>
+          </div>
+
+          <!-- Precio -->
+          <div class="text-end" style="width:100px;">$${item.precio * item.cantidad}</div>
+        </div>
+      `;
+      cartItems.appendChild(li);
+    });
+
+    cartTotal.textContent = `$${total}`;
+  }
+
+  // Pasarela de pagos (Wompi)
+  document.getElementById('checkout-btn').addEventListener('click', () => {
+    window.location.href = "https://checkout.wompi.co/l/VPOS_uGVCVh";
+  });
+
+  // Notificaciones
+  function mostrarNotificacion(mensaje, tipo = "info") {
+    const contenedor = document.getElementById("notificaciones");
+    const alerta = document.createElement("div");
+    alerta.className = `alert alert-${tipo} alert-dismissible fade show shadow-sm`;
+    alerta.role = "alert";
+    alerta.innerHTML = `
+      ${mensaje}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
+    contenedor.appendChild(alerta);
+
+    setTimeout(() => {
+      alerta.classList.remove("show");
+      alerta.classList.add("hide");
+      alerta.remove();
+    }, 3000);
+  }
+</script>
+
+<script>
+  function mostrarFormulario() {
+    document.getElementById('formulario-personalizado').style.display = 'block';
+    window.scrollTo({ top: document.getElementById('formulario-personalizado').offsetTop, behavior: 'smooth' });
+  }
+
+  document.getElementById('formPersonalizado').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Capturar datos
+    const nombre = document.getElementById('nombre').value;
+    const telefono = document.getElementById('telefono').value;
+    const correo = document.getElementById('correo').value;
+    const archivo = document.getElementById('archivo').value;
+
+    // Guardar en localStorage
+    const solicitud = { nombre, telefono, correo, archivo, fecha: new Date().toLocaleString() };
+    let solicitudes = JSON.parse(localStorage.getItem('solicitudes')) || [];
+    solicitudes.push(solicitud);
+    localStorage.setItem('solicitudes', JSON.stringify(solicitudes));
+
+    // Mostrar mensaje de agradecimiento
+    document.getElementById('formPersonalizado').style.display = 'none';
+    document.getElementById('mensaje-gracias').style.display = 'block';
+  });
+</script> 
+<div id="notificaciones" class="position-fixed top-0 end-0 p-3" style="z-index: 1050;"></div>
+
+<script>
+function mostrarNotificacion(mensaje, tipo = "info") {
+  const contenedor = document.getElementById("notificaciones");
+  const alerta = document.createElement("div");
+  alerta.className = `alert alert-${tipo} alert-dismissible fade show shadow-sm`;
+  alerta.role = "alert";
+  alerta.innerHTML = `
+    ${mensaje}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  `;
+  contenedor.appendChild(alerta);
+
+  setTimeout(() => {
+    alerta.classList.remove("show");
+    alerta.classList.add("hide");
+    alerta.remove();
+  }, 3000);
+}
+</script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<a href="https://wa.me/573007767691" target="_blank" class="whatsapp-btn">
+  WhatsApp
+</a>
+
+</body>
+</html>

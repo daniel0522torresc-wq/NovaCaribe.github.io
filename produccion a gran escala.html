@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Nova Caribe - Diseño Textil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Open+Sans&display=swap" rel="stylesheet">
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="style.css"></head>
+<body> 
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <!-- Nombre de la marca -->
+    <a class="navbar-brand" href="#">Nova Caribe</a>
+
+    <!-- Botón hamburguesa -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuHamburguesa" aria-controls="menuHamburguesa" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Opciones del menú -->
+    <div class="collapse navbar-collapse" id="menuHamburguesa">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="precios.html">Lista de Precios</a></li>
+        <li class="nav-item"><a class="nav-link" href="diseño textil.html">Diseño Textil</a></li>
+        <li class="nav-item"><a class="nav-link" href="confeccion de uniformes.html">Confección de Uniformes</a></li>
+
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+  <header class="bg-white">
+    <div class="container py-5 d-flex align-items-center justify-content-between">
+      <h1 class="mb-0">Producción A Gran Escala</h1>
+      <img src="logo nova caribe.jpg" alt="Logo Nova Caribe" 
+           style="width:150px; height:150px; border-radius:50%; object-fit:cover;">
+    </div>
+  </header>
+
+
+  
+<div class="container my-5">
+  <h2 class="text-center mb-4">Diseño Textil</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-6 mb-4">
+      <div class="card position-relative">
+        <img src="porduccion a gran escala.webp" alt="Producción a gran escala" 
+             class="img-fluid rounded w-100" style="height:400px; object-fit:cover;">
+        <div class="overlay bg-dark bg-opacity-75 text-center p-3">
+          <h3 class="text-white mb-1">Producción a Gran Escala</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Formulario de producción a gran escala -->
+<div class="container my-5">
+  <h3 class="text-center mb-4">Envía tu diseño para gran escala</h3>
+  <form id="formDiseno">
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="nombre" required>
+    </div>
+    <div class="mb-3">
+      <label for="correo" class="form-label">Correo</label>
+      <input type="email" class="form-control" id="correo" required>
+    </div>
+    <div class="mb-3">
+      <label for="idea" class="form-label">Describe tu diseño</label>
+      <textarea class="form-control" id="idea" rows="4" required></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="archivo" class="form-label">Adjunta un archivo (opcional)</label>
+      <input type="file" class="form-control" id="archivo">
+    </div>
+    <button type="submit" class="btn btn-success">Enviar Diseño</button>
+  </form>
+  <div id="mensaje-gracias" class="alert alert-success mt-3" style="display:none;">
+    ¡Gracias por enviar tu diseño! Nos pondremos en contacto contigo.
+  </div>
+</div>
+
+
+<!-- Notificaciones -->
+<div id="notificaciones" class="position-fixed top-0 end-0 p-3" style="z-index: 1050;"></div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Script del carrito y formulario -->
+ <!-- Botón de carrito fijo -->
+  <div class="cart-btn">
+    <button class="btn btn-dark rounded-circle p-3" 
+            data-bs-toggle="offcanvas" 
+            data-bs-target="#cartSidebar" 
+            aria-controls="cartSidebar">
+      🛒
+    </button>
+  </div>
+
+    <!-- Sidebar del carrito -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="cartSidebar" aria-labelledby="cartSidebarLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="cartSidebarLabel">Carrito de Compras</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul id="cart-items" class="list-group mb-3"></ul>
+      <h6>Total: <span id="cart-total">$0</span></h6>
+      <button id="checkout-btn" class="btn btn-success w-100 mt-3">Ir a pagar</button>
+    </div>
+  </div>
+
+  <!-- Script de cantidades, multiplicación y eliminación -->
+<script>
+  let cart = [];
+
+  // Agregar producto al carrito
+  function addToCart(nombre, precio, cantidad = 1) {
+    cantidad = parseInt(cantidad);
+    const existing = cart.find(item => item.nombre === nombre);
+    if (existing) {
+      existing.cantidad += cantidad;
+    } else {
+      cart.push({ nombre, precio, cantidad });
+    }
+    renderCart();
+    mostrarNotificacion(`${nombre} agregado`, "success");
+  }
+
+  // Aumentar cantidad
+  function increaseQuantity(index) {
+    cart[index].cantidad += 1;
+    renderCart();
+    mostrarNotificacion(`${cart[index].nombre} agregado`, "success");
+  }
+
+  // Disminuir cantidad
+  function decreaseQuantity(index) {
+    if (cart[index].cantidad > 1) {
+      cart[index].cantidad -= 1;
+      mostrarNotificacion(`${cart[index].nombre} eliminado (1 unidad)`, "warning");
+    } else {
+      const eliminado = cart[index].nombre;
+      cart.splice(index, 1);
+      mostrarNotificacion(`${eliminado} eliminado`, "danger");
+    }
+    renderCart();
+  }
+
+  // Renderizar carrito
+  function renderCart() {
+    const cartItems = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+    cartItems.innerHTML = '';
+    let total = 0;
+
+    cart.forEach((item, index) => {
+      total += item.precio * item.cantidad;
+
+      const li = document.createElement('li');
+      li.className = 'list-group-item';
+      li.innerHTML = `
+        <div class="d-flex justify-content-between align-items-center">
+          <!-- Nombre del producto -->
+          <div class="flex-fill text-start"><strong>${item.nombre}</strong></div>
+
+          <!-- Control de cantidad -->
+          <div class="d-flex align-items-center justify-content-center" style="width:120px;">
+            <button class="btn btn-sm btn-outline-secondary" onclick="decreaseQuantity(${index})">-</button>
+            <span class="mx-2">${item.cantidad}</span>
+            <button class="btn btn-sm btn-outline-secondary" onclick="increaseQuantity(${index})">+</button>
+          </div>
+
+          <!-- Precio -->
+          <div class="text-end" style="width:100px;">$${item.precio * item.cantidad}</div>
+        </div>
+      `;
+      cartItems.appendChild(li);
+    });
+
+    cartTotal.textContent = `$${total}`;
+  }
+
+  // Pasarela de pagos (Wompi)
+  document.getElementById('checkout-btn').addEventListener('click', () => {
+    window.location.href = "https://checkout.wompi.co/l/VPOS_uGVCVh";
+  });
+  // Notificaciones
+  function mostrarNotificacion(mensaje, tipo = "info") {
+    const contenedor = document.getElementById("notificaciones");
+    const alerta = document.createElement("div");
+    alerta.className = `alert alert-${tipo} alert-dismissible fade show shadow-sm`;
+    alerta.role = "alert";
+    alerta.innerHTML = `
+      ${mensaje}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
+    contenedor.appendChild(alerta);
+
+    setTimeout(() => {
+      alerta.classList.remove("show");
+      alerta.classList.add("hide");
+      alerta.remove();
+    }, 3000);
+  }
+
+  // Formulario de ideas
+  document.getElementById('formDiseno').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Capturar datos
+    const nombre = document.getElementById('nombre').value;
+    const correo = document.getElementById('correo').value;
+    const idea = document.getElementById('idea').value;
+    const archivo = document.getElementById('archivo').value;
+
+    // Guardar en localStorage
+    const solicitud = { nombre, correo, idea, archivo, fecha: new Date().toLocaleString() };
+    let solicitudes = JSON.parse(localStorage.getItem('solicitudesDiseno')) || [];
+    solicitudes.push(solicitud);
+    localStorage.setItem('solicitudesDiseno', JSON.stringify(solicitudes));
+
+    // Mostrar mensaje de agradecimiento
+    document.getElementById('formDiseno').style.display = 'none';
+    document.getElementById('mensaje-gracias').style.display = 'block';
+  });
+</script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<a href="https://wa.me/573007767691" target="_blank" class="whatsapp-btn">
+  WhatsApp
+</a>
+      <div class="text-center mt-4">
+      <a href="index.html" class="btn btn-portafolio">Ir a inicio</a>
+      <a href="portafolio.html" class="btn btn-portafolio">Regresar</a>
+      
+    
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Nova Caribe Textil y Confecciones</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+</html>

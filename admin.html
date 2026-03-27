@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Solicitudes Personalizadas - Admin</title>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Open+Sans&display=swap" rel="stylesheet">
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="container my-5">
+
+  <!-- Navbar (opcional, igual que tu sitio) -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Nova Caribe</a>
+    </div>
+  </nav>
+
+  <h1 class="mb-4 text-center">Solicitudes de Diseños Personalizados</h1>
+
+  <table class="table table-bordered shadow-sm">
+    <thead class="table-dark">
+      <tr>
+        <th>Nombre</th>
+        <th>Teléfono</th>
+        <th>Correo</th>
+        <th>Archivo/Idea</th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+    <tbody id="tabla-solicitudes"></tbody>
+  </table>
+
+  <script>
+    // Leer solicitudes desde localStorage
+    const solicitudes = JSON.parse(localStorage.getItem('solicitudes')) || [];
+    const tabla = document.getElementById('tabla-solicitudes');
+
+    if (solicitudes.length === 0) {
+      const fila = document.createElement('tr');
+      fila.innerHTML = `<td colspan="5" class="text-center">No hay solicitudes registradas</td>`;
+      tabla.appendChild(fila);
+    } else {
+      solicitudes.forEach(s => {
+        const fila = document.createElement('tr');
+        fila.innerHTML = `
+          <td>${s.nombre}</td>
+          <td>${s.telefono}</td>
+          <td>${s.correo}</td>
+          <td>${s.archivo || 'No adjunto'}</td>
+          <td>${s.fecha}</td>
+        `;
+        tabla.appendChild(fila);
+      });
+    }
+  </script> 
+
+  <!-- Pie de página -->
+  <footer class="text-center mt-5">
+    <p>&copy; 2026 Nova Caribe Textil y Confecciones</p>
+  </footer>
+
+</body>
+</html>
